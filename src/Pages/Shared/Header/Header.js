@@ -5,10 +5,10 @@ import logo from '../../../asset/logo.png'
 const Header = () => {
 
     const menuItems = <>
-    <li><Link to='/'>Home</Link></li>
-    <li><Link to='/blogs'>Blogs</Link></li>
-    <li><Link to='/services'>Services</Link></li>
-    <li><Link to='/about'>About Us</Link></li>
+    <li className='font-semibold'><Link to='/'>Home</Link></li>
+    <li className='font-semibold'><Link to='/blogs'>Blogs</Link></li>
+    <li className='font-semibold'><Link to='/services'>Services</Link></li>
+    <li className='font-semibold'><Link to='/about'>About Us</Link></li>
     </>
 
     return (

@@ -6,7 +6,7 @@ function App() {
   
 
   return (
-    <div>
+    <div className='fullSite mx-auto'>
       <RouterProvider router={router}></RouterProvider>
     </div>
   );

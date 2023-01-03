@@ -1,0 +1,20 @@
+[
+    {
+        "_id": "001",
+        "title": "India Tour",
+        "img": "https://i.ibb.co/NVJndQt/india-best-places-to-visit-agra.jpg",
+        "price": "20000",
+        "description": "Visit beautiful places in India like Tajmahal, Kashmir, Darjeeling etc. Take the best services from us.",
+        "duration": "3",
+        "total": "458"
+    },
+    {
+        "_id": "002",
+        "title": "Switzerland Tour",
+        "img": "https://i.ibb.co/yFHQJSL/Spiez-Switzerland.jpg",
+        "price": "120000",
+        "description": "Visit beautiful places in Switzerland like Zurich, Bern, Basel etc. Enjoy the best services from us.",
+        "duration": "4",
+        "total": "210"
+    }
+]

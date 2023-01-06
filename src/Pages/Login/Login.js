@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Login = () => {
 
+  const {login} = useContext(AuthContext);
+
     const handleLogin = event =>{
         event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        login(email, password)
+        .then( result =>{
+         const user = result.user;
+         console.log(user)
+        })
+        .then(error => console.log(error));
     }
 
   return (
@@ -17,7 +30,7 @@ const Login = () => {
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form className="card-body">
+          <form  onSubmit={handleLogin} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -48,7 +61,7 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control my-6">
-                <input onSubmit={handleLogin} className="btn btn-primary" type="submit" value="Login" />
+                <input className="btn btn-primary" type="submit" value="Login" />
             </div>
             <p className="text-sm text-center">New to Travio? Please <Link to='/signup' className="text-blue-600">Sign up</Link> </p>
           </form>

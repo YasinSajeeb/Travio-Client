@@ -1,23 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Login = () => {
-
-    const handleLogin = event =>{
-        event.preventDefault();
-    }
-
+const Signup = () => {
   return (
     <div className="hero min-h-screen bg-base-200">
-      <div className="hero-content grid md:grid-cols-2 flex-col lg:flex-row-reverse">
+      <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
+          <h1 className="text-5xl font-bold">Signup now!</h1>
           <p className="py-6">
-            Book a ticket now! And join the tour. Please Login to book a ticket.
+          Book a ticket now! And join the tour. Please signup to book a ticket.
           </p>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form className="card-body">
+          <div className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                className="input input-bordered"
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -41,21 +47,17 @@ const Login = () => {
                 className="input input-bordered"
                 required
               />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
+              
             </div>
-            <div className="form-control my-6">
-                <input onSubmit={handleLogin} className="btn btn-primary" type="submit" value="Login" />
+            <div className="form-control mt-6">
+              <button className="btn btn-primary">Sign up</button>
             </div>
-            <p className="text-sm text-center">New to Travio? Please <Link to='/signup' className="text-blue-600">Sign up</Link> </p>
-          </form>
+            <p className="text-sm text-center">Already have an account? Please <Link to='/login' className="text-blue-600">Log in</Link> </p>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Signup;

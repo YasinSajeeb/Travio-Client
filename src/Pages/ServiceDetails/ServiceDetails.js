@@ -1,6 +1,7 @@
 import React from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { useLoaderData } from 'react-router-dom';
+import ServiceReview from '../ServiceReview/ServiceReview';
 
 const ServiceDetails = () => {
     
@@ -29,6 +30,9 @@ const ServiceDetails = () => {
                 <button className='w-1/2 ml-4 h-10 rounded transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 bg-blue-700 mt-2 text-white'>Buy The Package</button>
             </div>
             </div>
+            <ServiceReview
+            serviceDetails={serviceDetails}
+            ></ServiceReview>
         </div>
     );
 };

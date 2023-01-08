@@ -1,14 +1,21 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Signup = () => {
 
-    const {createUser} = useContext(AuthContext);
+    const {createUser, updateUserProfile} = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleSignUp = event =>{
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
 
@@ -16,9 +23,26 @@ const Signup = () => {
         .then(result => {
             const user = result.user;
             console.log(user)
+            setError('');
+            form.reset();
+            handleUpdateUserProfile(name, photoURL);
+            alert('Please verify your email address.')
+            navigate(from, { replace: true });
         })
         .catch(err => console.error(err));
+
+        const handleUpdateUserProfile = (name, photoURL) => {
+          const profile = {
+              displayName: name,
+              photoURL: photoURL
+          }
+
+          updateUserProfile(profile)
+              .then(() => { })
+              .catch(e => console.error(e));
+      }
     }
+
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -40,6 +64,19 @@ const Signup = () => {
                 name="name"
                 placeholder="Your Name"
                 className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Your Photo</span>
+              </label>
+              <input
+                type="text"
+                name="photoURL"
+                placeholder="Photo URL"
+                className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -65,6 +102,9 @@ const Signup = () => {
                 className="input input-bordered"
                 required
               />
+              <label className="label">
+               <span className='text-red-600'>{error}</span>
+              </label>
               
             </div>
             <div className="form-control mt-6">

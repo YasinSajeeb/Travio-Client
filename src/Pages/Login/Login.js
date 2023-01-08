@@ -1,10 +1,28 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { GoogleAuthProvider } from "firebase/auth";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Login = () => {
 
-  const {login} = useContext(AuthContext);
+  const [error, setError] = useState();
+  const {providerLogin, login} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/';
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleGoogleSignIn = () =>{
+    providerLogin(googleProvider)
+    .then(result => {
+        const user = result.user;
+        console.log(user)
+      })
+    .catch(e => console.log(e))
+    
+  }
 
     const handleLogin = event =>{
         event.preventDefault();
@@ -16,6 +34,9 @@ const Login = () => {
         .then( result =>{
          const user = result.user;
          console.log(user)
+         setError('');
+        form.reset();
+        navigate(from, { replace: true });
         })
         .then(error => console.log(error));
     }
@@ -29,6 +50,7 @@ const Login = () => {
             Book a ticket now! And join the tour. Please Login to book a ticket.
           </p>
         </div>
+        
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form  onSubmit={handleLogin} className="card-body">
             <div className="form-control">
@@ -59,12 +81,17 @@ const Login = () => {
                   Forgot password?
                 </a>
               </label>
+              <label className="label">
+              <span className='text-red-600'>{error}</span>
+              </label>
             </div>
             <div className="form-control my-6">
                 <input className="btn btn-primary" type="submit" value="Login" />
             </div>
             <p className="text-sm text-center">New to Travio? Please <Link to='/signup' className="text-blue-600">Sign up</Link> </p>
           </form>
+          <p className="text-center my-5">or</p>
+          <button className='rounded-none btn bg-[#3078fb] border-0  hover:bg-white hover:text-[#3078fb] hover:border-[1px] hover:border-[#3078fb] transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 flex items-center w-3/4 mx-auto mb-5' onClick={handleGoogleSignIn}>Log in with Google</button>
         </div>
       </div>
     </div>

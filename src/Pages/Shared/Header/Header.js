@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../asset/logo.png'
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { FaUser } from "react-icons/fa";
 
 const Header = () => {
 
@@ -17,7 +18,6 @@ const Header = () => {
     <li className='font-semibold'><Link to='/'>Home</Link></li>
     <li className='font-semibold'><Link to='/blogs'>Blogs</Link></li>
     <li className='font-semibold'><Link to='/services'>Services</Link></li>
-    <li className='font-semibold'><Link to='/about'>About Us</Link></li>
     <li>{
             user?.uid ?
                 <>
@@ -56,7 +56,21 @@ const Header = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Get started</a>
+  <ul className='mr-3'>
+      {
+        user?.uid ?
+          <p className='font-semibold'>{user?.displayName}</p>
+            :
+          <></>
+       }
+  </ul>
+  <ul>
+  {user?.photoURL ?
+    <img className='rounded-full h-10 shadow-md' src={user?.photoURL} alt="" />
+      :
+    <FaUser></FaUser>
+  }
+  </ul>
   </div>
 </div>
     );

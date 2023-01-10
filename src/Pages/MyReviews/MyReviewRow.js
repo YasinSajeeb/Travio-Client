@@ -7,7 +7,7 @@ const MyReviewRow = ({review, handleDelete}) => {
     const { _id, serviceName, price, customerReview, customer, singleService } = review;
 
     useEffect(()=>{
-        fetch(`https://travio-server.vercel.app/services/${singleService}`)
+        fetch(`http://localhost:5000/services/${singleService}`)
         .then(res=>res.json())
         .then(data => setReviewService(data))
     },[singleService])
@@ -37,8 +37,6 @@ const MyReviewRow = ({review, handleDelete}) => {
         </td>
         <td>
           {customerReview}
-          <br/>
-          <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
         </td>
         <td>{price}</td>
       </tr>

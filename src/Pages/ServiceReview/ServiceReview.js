@@ -31,7 +31,7 @@ const ServiceReview = ({serviceDetails}) => {
             customerReview
         }
 
-        fetch('https://travio-server.vercel.app/reviews', {
+        fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -43,7 +43,7 @@ const ServiceReview = ({serviceDetails}) => {
             .catch(err => console.error(err));
 }
 useEffect(() => {
-    fetch(`https://travio-server.vercel.app/reviews`)
+    fetch(`http://localhost:5000/reviews`)
         .then(res => res.json())
         .then(data => setReviews(data))
 }, [])

@@ -5,7 +5,7 @@ import ServiceCard from '../Services/ServiceCard';
 const HomeServices = () => {
     const [homeServices, setHomeServices] = useState([]);
     useEffect( ()=>{
-        fetch('http://localhost:5000/services')
+        fetch('https://travio-server.vercel.app/services')
         .then(res =>res.json())
         .then(data =>setHomeServices(data))
     }, [])

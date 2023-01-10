@@ -9,7 +9,7 @@ const MyReviews = () => {
     const [reviews, setReview] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+        fetch(`https://travio-server.vercel.app/reviews?email=${user?.email}`)
         .then(res => res.json())
         .then(data => setReview(data))
     }, [user?.email])
@@ -17,7 +17,7 @@ const MyReviews = () => {
     const handleDelete = id => {
         const proceed = window.confirm("Are you sure you want to delete this Review?")
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${id}`,
+            fetch(`https://travio-server.vercel.app/reviews/${id}`,
                 {
                     method: 'DELETE'
                 })

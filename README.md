@@ -1,3 +1,25 @@
+# Website Name: Travio
+## Website Link: 
+
+## Description: 
+
++ This is a Travel Agency Website
++ In this website, you'll get 6 different places for tourist services.
++ Each Service Card has a picture, price, details, durations etc.
++ A user can also add services. But first he'll need to login.
++ If someone is new to this website, he can create an account, also can login with google account
++ Also users can add reviews to the services. A person can all reviews in the services. If he want to add services, he needs to login first.
++ There is also a blog page.
++ If a user is logged in, he can see My reviews, logout button in navbar.
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
